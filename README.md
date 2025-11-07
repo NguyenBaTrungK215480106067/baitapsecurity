@@ -219,6 +219,14 @@ Ký file PDF: python sign_pdf.py original.pdf signed.pdf
 Kiểm tra chữ ký: python verify_pdf.py signed.pdf demo_cert.pem
 
 kết quả:
-****![Uploading image.png…]()
+<img width="404" height="153" alt="image" src="https://github.com/user-attachments/assets/8e8ae402-b477-4931-93e2-de6a71dcafdf" />
+
+ Xác mình chữ ký PDF File: verify_pdf_signature.py Thực hiện: python verify_pdf_signature.py
+
+Các bước xác mình: Đọc Signature dictionary: /Contents, /ByteRange Tách chuỗi PKCS#7 từ PDF Kiểm tra messageDigest so với hash thực tế Xác minh chữ ký bằng public key trong signer_cert.pem Kiểm tra chứng thư (chain, validity date) Kiểm tra có bị sửa đổi (so sánh ByteRange) Kết quả: Xác minh hợp lệ:
+
+<img width="1005" height="244" alt="image" src="https://github.com/user-attachments/assets/8d96b4e3-c578-494d-9436-4125cffbb9f7" />
+
+
 
 
