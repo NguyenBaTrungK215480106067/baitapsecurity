@@ -1,38 +1,66 @@
-WEB_SECURITY_BT2
+#WEB_SECURITY_BT2
+
 Bài tập 02 của sinh viên: K215480106067 - Nguyễn Bá Trung - môn An toàn và bảo mật thông tin
 
 BÀI TẬP VỀ NHÀ – MÔN: AN TOÀN VÀ BẢO MẬT THÔNG TIN
+
 Chủ đề: Chữ ký số trong file PDF
+
 Giảng viên: Đỗ Duy Cốp
+
 Thời điểm giao: 2025-10-24 11:45
+
 Đối tffợng áp dụng: Toàn bộ sv lớp học phần 58KTPM
+
 Hạn nộp: Sv upload tất cả lên github trước 2025-10-31 23:59:59
+
 I. MÔ TẢ CHUNG
+
 Sinh viên thực hiện báo cáo và thực hành: phân tích và hiện thực việc nhúng, xác
 thực chữ ký số trong file PDF.
+
 Phải nêu rõ chuẩn tham chiếu (PDF 1.7 / PDF 2.0, PAdES/ETSI) và sử dụng công cụ
 thực thi (ví dụ iText7, OpenSSL, PyPDF, pdf-lib).
+
 II. YÊU CẦU NỘP BÀI
+
 Báo cáo PDF ≤ 6 trang: mô tả cấu trúc, thời gian ký, rủi ro bảo mật.
 Code + README (Git repo hoặc zip).
+
 Demo files: original.pdf, signed.pdf, tampered.pdf.
 (Tuỳ chọn) Video 3–5 phút demo kết quả.
+
 III. TIÊU CHÍ CHẤM
+
 Lý thuyết & cấu trúc PDF/chữ ký: 25%
+
 Quy trình tạo chữ ký đúng kỹ thuật: 30%
 Xác thực đầy đủ (chain, OCSP, timestamp): 25%
+
 Code & demo rõ ràng: 15%
+
 Sáng tạo mở rộng (LTV, PAdES): 5%
+
 BÀI LÀM:
+
 I. Cấu trúc PDF liên quan chữ ký số
+
 Khi tích hợp chữ ký số, tệp PDF không ghi đè lên nội dung gốc mà thêm một bản cập nhật gia tăng (incremental update). Phần này chứa các đối tượng (object) mới phục vụ việc lưu và hiển thị chữ ký.
+
 Thành phần chính trong cấu trúc PDF có chữ ký
+
 Catalog:Nút gốc của tài liệu, trỏ tới cây trang (/Pages) và biểu mẫu (/AcroForm).
+
 Pages Tree / Page Object: Quản lý các trang và nội dung hiển thị.
+
 AcroForm: Định nghĩa các trường biểu mẫu, trong đó có trường chữ ký.
+
 Signature Field (Widget): Vùng hiển thị chữ ký, gắn vào vị trí cụ thể trên trang PDF.
+
 Signature Dictionary (/Sig): Lưu thông tin về người ký, thời gian ký và dữ liệu chữ ký (PKCS#7/CAdES).
+
 /ByteRange: Xác định vùng byte được ký (loại trừ vùng chứa chữ ký).
+
 /Contents: Chứa dữ liệu chữ ký số (chuỗi PKCS#7).
 DSS (Document Security Store): Lưu dữ liệu xác minh dài hạn (certificates, OCSP, CRL, timestamp).
 Cấu trúc Signature Dictionary
