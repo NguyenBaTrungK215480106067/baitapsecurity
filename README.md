@@ -218,3 +218,7 @@ Ký file PDF: python sign_pdf.py original.pdf signed.pdf
 
 Kiểm tra chữ ký: python verify_pdf.py signed.pdf demo_cert.pem
 
+kết quả:
+****![Uploading image.png…]()
+
+
