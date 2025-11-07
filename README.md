@@ -209,8 +209,12 @@ Mọi hệ thống ký phải bảo vệ khóa riêng, lưu timestamp hợp lệ
 
 LỆNH CHẠY CODE:
 
+
 Đầu tiên phải tải và cài đặt python bản 3.12.x, chuẩn bị môi trường trong vs code;
+
 Cài thư viện: pip install cryptography pypdf asn1crypto
+
 Ký file PDF: python sign_pdf.py original.pdf signed.pdf
+
 Kiểm tra chữ ký: python verify_pdf.py signed.pdf demo_cert.pem
-Kết quả:
+
